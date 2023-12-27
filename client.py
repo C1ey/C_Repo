@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 
-app = Flask(name)
+app = Flask(__name__)
 
 server_host = "128.0.0.7"
-server_url = f" http://{server_host}:{server_port}"
+server_url = f" http://{server_host}:{7000}"
 
 @app.route("/")
 def index():
@@ -22,5 +22,5 @@ def send_message():
         messages=response.json().get("messages", [])
         return render_template("messages.html", messages=messages)
 
-if name =="__main__":
+if __name__ =="__main__":
     app.run(debug=True)
