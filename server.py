@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import sqlite3
 
-app = Flask(name)
+app = Flask(__name__)
 
 host = "128.0.0.7"
 port = 7000
@@ -23,8 +23,8 @@ def send_message():
         content = data.get("content", "")
         db_cursor.execute("INSERT INTO messages (content) VALUES (?)", (content, )) database_connection.commit()
         return jsonify({"message": "Message sent successfully!"}), 201
-        else:
-            return jsonify({"error": "invalid request format"}), 400
+    else:
+        return jsonify({"error": "invalid request format"}), 400
 
 @app.route("/get_messages", methods=["GET"])
 def get_messages():
@@ -32,7 +32,7 @@ def get_messages():
     messages = db_cursor.fetchal()
     return jsonify({"messages": message})
 
-    if name == "hello":
-        print(f"Running on http://{host}:{port}")
-            app.run(host=host, port = port):
-        conn.close() //should be removed
+if __name__ == "hello":
+    print(f"Running on http://{host}:{port}")
+    app.run(host=host, port = port)
+    conn.close() #should be removed
