@@ -16,11 +16,11 @@ def send_message():
     response = requests.post(f"{server_url}/send_message", json={"content": content})
     return jsonify(response.json())
 
-    @app.route("/get_messages", methods=["GET"])
-    def get_messages():
-        response = requests.get(f"{server_url}/get_messages")
-        messages=response.json().get("messages", [])
-        return render_template("messages.html", messages=messages)
+@app.route("/get_messages", methods=["GET"])
+def get_messages():
+    response = requests.get(f"{server_url}/get_messages")
+    messages=response.json().get("messages", [])
+    return render_template("messages.html", messages=messages)
 
 if __name__ =="__main__":
     app.run(debug=True)
