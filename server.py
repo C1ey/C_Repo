@@ -7,7 +7,7 @@ host = "128.0.0.7"
 port = 7000
 greeting_message = "Welcome, what can I do for you?"
 
-database_connection = sqlite3.connect("C:\Users\Cley\Downloads\Local Database") #Add your database here
+database_connection = sqlite3.connect("qldatabase.db") #Add your database here
 db_cursor = database_connection.cursor()
 db_cursor.execute("CREATE TABLE IF NOT EXISTS message (id INTEGER PRIMARY KEY, content TEXT)")
 database_connection.commit()
